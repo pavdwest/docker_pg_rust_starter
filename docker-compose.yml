@@ -10,8 +10,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-      # App will create its own DB!
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=project_db
       - POSTGRES_PORT=5432
     ports:
       # Expose on different port to prevent conflict with local
@@ -44,7 +43,8 @@ services:
       - DATABASE_PORT=5432
       - DATABASE_USERNAME=admin
       - DATABASE_PASSWORD=admin
-      - DATABASE_NAME=project_database
+      - DATABASE_NAME=project_db
+      - DATABASE_URL=postgres://admin:admin@db/project_db
       - ROCKET_ADDRESS=0.0.0.0
     volumes:
       - ./services/backend/app:/app
